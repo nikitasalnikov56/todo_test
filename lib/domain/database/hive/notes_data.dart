@@ -14,12 +14,13 @@ class NotesData {
   @HiveField(2)
   bool isChecked;
 
-
+  @HiveField(3)
+  String? imagePath;
 
   NotesData({
-     this.title,
-     this.text,
+    this.title,
+    this.text,
     this.isChecked = false,
-
+     this.imagePath,
   });
 }

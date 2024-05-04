@@ -8,11 +8,21 @@ class TodoLoadingEvent extends TodoEvent {}
 class TodoAddEvent extends TodoEvent {
   final String title;
   final String text;
+  final File? selectedImage;
 
-  TodoAddEvent({required this.title, required this.text});
+  TodoAddEvent({required this.title, required this.text, this.selectedImage});
 }
 
+class TodoCameraEvent extends TodoEvent {
+  final File? selectedImage;
 
+  TodoCameraEvent(this.selectedImage);
+}
+class TodoGalleryEvent extends TodoEvent {
+  final File? selectedImage;
+
+  TodoGalleryEvent(this.selectedImage);
+}
 
 class TodoDeleteEvent extends TodoEvent {
   final int index;
@@ -30,10 +40,12 @@ class TodoChangeEvent extends TodoEvent {
   final String title;
   final String text;
   final bool? isChecked;
+   final File? selectedImage;
   TodoChangeEvent({
     required this.index,
     required this.title,
     required this.text,
+     this.selectedImage,
     this.isChecked = false,
   });
 }

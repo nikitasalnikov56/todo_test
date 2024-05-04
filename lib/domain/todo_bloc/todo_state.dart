@@ -12,6 +12,7 @@ class TodoLoadingState extends TodoState {
 
 class AllTodoState extends TodoState {
   final List<NotesData> notes;
-
-  AllTodoState({required this.notes});
+ final File? selectedImage;
+  AllTodoState({required this.notes, this.selectedImage});
 }
+

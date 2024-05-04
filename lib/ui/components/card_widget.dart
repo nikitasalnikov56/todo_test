@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_list/domain/todo_bloc/todo_bloc.dart';
@@ -22,7 +22,6 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: !state.notes[index].isChecked
           ? () {
@@ -42,6 +41,11 @@ class CardWidget extends StatelessWidget {
             enabled: false,
             dense: true,
             contentPadding: const EdgeInsets.all(0),
+            leading: state.notes[index].imagePath != null
+                ? SizedBox(
+                    height: 100,
+                    child: Image.file(File(state.notes[index].imagePath!)))
+                : null,
             title: Text(
               title,
               maxLines: 1,
@@ -55,23 +59,18 @@ class CardWidget extends StatelessWidget {
                 decorationThickness: 3,
               ),
             ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  subTitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppStyle.fontStyle.copyWith(
-                    fontSize: 18,
-                    color: AppColors.black,
-                    decoration: state.notes[index].isChecked
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                    decorationThickness: 3,
-                  ),
-                ),
-              ],
+            subtitle: Text(
+              subTitle,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyle.fontStyle.copyWith(
+                fontSize: 18,
+                color: AppColors.black,
+                decoration: state.notes[index].isChecked
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
+                decorationThickness: 3,
+              ),
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,

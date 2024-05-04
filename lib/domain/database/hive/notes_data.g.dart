@@ -20,19 +20,22 @@ class NotesDataAdapter extends TypeAdapter<NotesData> {
       title: fields[0] as String?,
       text: fields[1] as String?,
       isChecked: fields[2] as bool,
+      imagePath: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, NotesData obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.text)
       ..writeByte(2)
-      ..write(obj.isChecked);
+      ..write(obj.isChecked)
+      ..writeByte(3)
+      ..write(obj.imagePath);
   }
 
   @override

@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
           'TODO APP'.toUpperCase(),
           style: AppStyle.fontStyle,
         ),
+        centerTitle: true,
         actions: [
           SizedBox(
             width: 250,
